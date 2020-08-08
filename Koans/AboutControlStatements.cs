@@ -20,11 +20,11 @@ namespace DotNetCoreKoans.Koans
                 b = false;
             }
 
-            Assert.Equal(FILL_ME_IN, b);
+            Assert.Equal(true, b);                        //ANCA: Why is this true?? I though booleans by default were false??? Unless if (true) means if there's a statement???
         }
 
         [Step(2)]
-        public void IfThenElseStatementsWithoutBrackets()
+        public void IfThenElseStatementsWithoutBrackets()  //ANCA: They really mean curly braces here not brackets! :)
         {
             bool b;
             if(true)
@@ -32,7 +32,7 @@ namespace DotNetCoreKoans.Koans
             else
                 b = false;
 
-            Assert.Equal(FILL_ME_IN, b);
+            Assert.Equal(true, b);
 
         }
 
@@ -45,7 +45,7 @@ namespace DotNetCoreKoans.Koans
                 b = true;
             }
 
-            Assert.Equal(FILL_ME_IN, b);
+            Assert.Equal(true, b);
         }
 
         [Step(4)]
@@ -55,7 +55,7 @@ namespace DotNetCoreKoans.Koans
             if (true)
                 b = true;
 
-            Assert.Equal(FILL_ME_IN, b);
+            Assert.Equal(true, b);
         }
 
         [Step(5)]
@@ -70,8 +70,8 @@ namespace DotNetCoreKoans.Koans
                 b1 = true;
                 b2 = true;
 
-			Assert.Equal(FILL_ME_IN, b1);
-			Assert.Equal(FILL_ME_IN, b2);
+			Assert.Equal(false, b1);
+			Assert.Equal(false, b2);
         }
 
         [Step(6)]
