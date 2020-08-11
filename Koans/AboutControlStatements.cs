@@ -20,7 +20,7 @@ namespace DotNetCoreKoans.Koans
                 b = false;
             }
 
-            Assert.Equal(true, b);                        //ANCA: Why is this true?? I though booleans by default were false??? Unless if (true) means if there's a statement???
+            Assert.Equal(true, b);                        //ANCA: Why is this true?? Unless if (true) means if there's a statement??? Hmm Possible answer: debuggin statement that is always true!
         }
 
         [Step(2)]
@@ -71,14 +71,14 @@ namespace DotNetCoreKoans.Koans
                 b2 = true;
 
 			Assert.Equal(false, b1);
-			Assert.Equal(false, b2);
+			Assert.Equal(true, b2); //ANA: WHY Is this true?????
         }
 
         [Step(6)]
         public void TernaryOperators()
         {
-            Assert.Equal(FILL_ME_IN, (true ? 1 : 0));
-            Assert.Equal(FILL_ME_IN, (false ? 1 : 0));
+            Assert.Equal(1, (true ? 1 : 0));
+            Assert.Equal(0, (false ? 1 : 0));
         }
 
         //This is out of place for control statements, but necessary for Koan 8
@@ -89,8 +89,8 @@ namespace DotNetCoreKoans.Koans
             //i = null; //You can't do this
 
             int? nullableInt = null; //but you can do this
-			Assert.NotNull(FILL_ME_IN);
-			Assert.Null(FILL_ME_IN);
+			Assert.NotNull(0);
+			Assert.Null(null);
         }
 
         [Step(8)]
@@ -98,9 +98,10 @@ namespace DotNetCoreKoans.Koans
         {
             int? nullableInt = null;
 
-            int x = nullableInt ?? 42;
+            int x = nullableInt ?? 42; //The null-coalescing operator ?? returns the value of its left-hand operand if it isn't null; otherwise, it evaluates the right-hand operand and returns its result. 
+            //The ?? operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null. 
 
-            Assert.Equal(FILL_ME_IN, x);
+            Assert.Equal(42, x);
         }
 
         [Step(9)]
@@ -121,9 +122,9 @@ namespace DotNetCoreKoans.Koans
             if (myType is AboutMethods)
                 isAboutMethods = true;
 
-            Assert.Equal(FILL_ME_IN, isKoan);
-            Assert.Equal(FILL_ME_IN, isAboutControlStatements);
-            Assert.Equal(FILL_ME_IN, isAboutMethods);
+            Assert.Equal(true, isKoan);
+            Assert.Equal(true, isAboutControlStatements);
+            Assert.Equal(false, isAboutMethods);
 
         }
 
@@ -137,7 +138,7 @@ namespace DotNetCoreKoans.Koans
                 result = result + i;
                 i += 1;
             }
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(7, result);
         }
 
         [Step(11)]
@@ -151,7 +152,7 @@ namespace DotNetCoreKoans.Koans
                 result = result + i;
                 i += 1;    
             }
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(7, result); //ANCA: Keep going until i = 3!!
         }
 
         [Step(12)]
@@ -165,7 +166,7 @@ namespace DotNetCoreKoans.Koans
                 if ((i % 2) == 0) { continue; }
                 result.Add(i);
             }
-            Assert.Equal(FILL_ME_IN, result);
+            Assert.Equal(new List<int> { 1, 3, 5, 7, 9 }, result); // so you want the values below 10 that are not divisible by 2!! Because if the number is divisible by 2 (has 0 remainder) > then, you continue and do NOT add it to the result list!!!
         }
 
         [Step(13)]
@@ -174,9 +175,9 @@ namespace DotNetCoreKoans.Koans
             var list = new List<string> { "fish", "and", "chips" };
             for (int i = 0; i < list.Count; i++)
             {
-                list[i] = (list[i].ToUpper());
+                list[i] = (list[i].ToUpper()); //this converts the entire word to uppercase!!
             }
-            Assert.Equal(FILL_ME_IN, list);
+            Assert.Equal(new List<string> { "FISH", "AND", "CHIPS" }, list);
         }
 
         [Step(14)]
@@ -188,8 +189,8 @@ namespace DotNetCoreKoans.Koans
             {
                 finalList.Add(item.ToUpper());
             }
-            Assert.Equal(FILL_ME_IN, list);
-            Assert.Equal(FILL_ME_IN, finalList);
+            Assert.Equal(new List<string> { "fish", "and", "chips"}, list);
+            Assert.Equal(new List<string> { "FISH", "AND", "CHIPS" }, finalList);
         }
 
         [Step(15)]
@@ -205,7 +206,7 @@ namespace DotNetCoreKoans.Koans
             }
             catch (Exception ex)
             {
-                Assert.Equal(typeof(FillMeIn), ex.GetType());
+                Assert.Equal(typeof(System.InvalidOperationException), ex.GetType()); //run the program and get the type of the error that gets displayed!! (like earlier!)
             }
         }
 
@@ -234,7 +235,7 @@ namespace DotNetCoreKoans.Koans
                 whoCaughtTheException = "When we tried to move to the next item in the list";
             }
 
-            Assert.Equal(FILL_ME_IN, whoCaughtTheException);
+            Assert.Equal("When we tried to move to the next item in the list", whoCaughtTheException); //NEED TO UNDERSTAND THIS BETTER!!!
         }
     }
 }
