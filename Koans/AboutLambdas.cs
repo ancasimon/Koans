@@ -16,21 +16,21 @@ namespace DotNetCoreKoans.Koans
 			//an anonymous method instead. As you can see there is no method name, but it is 
 			//prefixed with "delegate"
 			var numbers = new[] { 1, 2, 3, 4 };
-			var result = Array.ConvertAll(numbers, delegate(int x)
+			var result = Array.ConvertAll(numbers, delegate (int x)
 													{
 														return x.ToString();
 													});
 
-			Assert.Equal(FILL_ME_IN, result);
+			Assert.Equal(new String[]{"1", "2", "3", "4" }, result);
 		}
 		[Step(2)]
 		public void AnonymousMethodsCanAccessOuterVariables()
 		{
 			//Anonymous methods can access variable defined in the scope of the method where they are defined.
 			//In C# this is called accessing an Outer Variable. In other languages it is called closure. 
-			var numbers = new[] { 4, 5, 6, 7, 8, 9 };
+			var numbers = new[] { 4, 5, 6, 7, 8, 9 }; //ANCA: Integer 7 is at index position 3 in the array!!!!
 			int toFind = 7;
-			Assert.Equal(FILL_ME_IN, Array.FindIndex(numbers, delegate(int x)
+			Assert.Equal(3, Array.FindIndex(numbers, delegate(int x)
 													{
 														return x == toFind;
 													}));
@@ -49,7 +49,7 @@ namespace DotNetCoreKoans.Koans
 			}
 			var numbers = new[] { 4, 5, 6, 7, 8, 9 };
 			//toFind is not available here, yet criteria still works
-			Assert.Equal(FILL_ME_IN, Array.FindIndex(numbers, criteria));
+			Assert.Equal(3, Array.FindIndex(numbers, criteria));
 		}
 		
 		[Step(4)]
@@ -71,7 +71,7 @@ namespace DotNetCoreKoans.Koans
 													{
 														return x.ToString(); 
 													});
-			Assert.Equal(FILL_ME_IN, anonymous);
+			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
 			//The => pair is spoken as "going into". If you were talking about this 
 			//code with a peer, you would say "x going into..."
 		}
@@ -91,7 +91,7 @@ namespace DotNetCoreKoans.Koans
 													{
 														return x.ToString();
 													});
-			Assert.Equal(FILL_ME_IN, anonymous);
+			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
 		}
 
 		[Step(6)]
@@ -108,7 +108,7 @@ namespace DotNetCoreKoans.Koans
 													{
 														return x.ToString();
 													});
-			Assert.Equal(FILL_ME_IN, anonymous);
+			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
 		}
 
 		[Step(7)]
@@ -120,8 +120,8 @@ namespace DotNetCoreKoans.Koans
 				return x.ToString();
 			});
 			var lambda = Array.ConvertAll(numbers, x => x.ToString());
-			//When you have only one statement, the curly brackets are not needed. What other two things are also missing?
-			Assert.Equal(FILL_ME_IN, anonymous);
+			//When you have only one statement, the curly brackets are not needed. What other two things are also missing? //Anca: word "return" and semi0colon after ToString()
+			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
 		}
 	}
 }
